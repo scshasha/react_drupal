@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+const pageTitle = document.title;
 
 export default () => {
   const [count, setCount] = useState(0);
   // const btnStyles  = "outline button-small button";
   const styles  = 'btn btn-primary me-2';
+
+  useEffect(() => {
+    if (count > 0) {
+      document.title = `${pageTitle} - Current Count is ${count}`;
+    }
+  });
   return (
     <>
       <button onClick={()=>{setCount(count+1)}} type="button" className={`${styles}`} data-mdb-ripple-init>
