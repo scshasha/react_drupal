@@ -3,9 +3,8 @@ import React, { useState, useEffect } from "react";
 const pageTitle = document.title;
 
 export default () => {
-  const [count, setCount] = useState(0);
-  // const btnStyles  = "outline button-small button";
   const styles  = 'btn btn-primary me-2';
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
       count && (document.title = `${pageTitle} - Current Count is ${count}`);
