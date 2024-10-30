@@ -1,0 +1,29 @@
+# OS X files.
+.DS_STORE
+.Ds_Store
+.DS_Store
+
+# IDE related directories.
+.idea
+.vscode
+
+# Database and compressed files.
+*.mysql
+*.sql
+*.gz
+*.zip
+*.rar
+*.7z
+
+# NPM.
+node_modules/
+.sass-cache
+.cache
+
+# Temporary files
+/tmp/*
+
+# Ensure .gitkeep files are commited so folder structure get respected.
+!.gitkeep
+/.editorconfig
+/.gitattributes
