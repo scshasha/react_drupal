@@ -1,0 +1,22 @@
+<?php
+
+/**
+* @file
+* Contains react_drupal.module.
+*/
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function react_drupal_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $routeMatch) {
+  switch ($route_name) {
+    case 'help.page.react_drupal':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A description of what your module does.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
