@@ -1,0 +1,53 @@
+{
+  "name": "react_app",
+  "version": "1.0.0",
+  "description": "Test application",
+  "main": "index.js",
+  "scripts": {
+    "build": "NODE_ENV=production webpack",
+    "watch": "webpack --watch --pregress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/scshasha/react_app.git"
+  },
+  "keywords": [
+    "react",
+    "drupal"
+  ],
+  "author": "Sivuyile Shasha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scshasha/react_app/issues"
+  },
+  "homepage": "https://github.com/scshasha/react_app#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "babel-loader": "^9.2.1",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "browsers": [
+              "IE >= 11",
+              "last 3 versions"
+            ]
+          }
+        }
+      ],
+      "@babel/preset-react"
+    ]
+  }
+}
