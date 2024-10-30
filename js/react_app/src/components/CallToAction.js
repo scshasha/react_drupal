@@ -7,14 +7,7 @@ export default () => {
   return (
     <>
       <button onClick={()=>{setCount(count+1)}} type="button" className={`${styles}`} data-mdb-ripple-init>
-        {(() => {
-          if (count === 0) {
-            return "Click to start counting!";
-          }
-          else {
-            return `Current count is ${count}`;
-          }
-        })()}
+        {count === 0 ? "Click to start counting." : `Current count is ${count}`}
       </button>
       <button onClick={()=>{setCount(0)}} type="button" className={`${styles} btn-danger`} data-mdb-ripple-init disabled={count === 0}>
         Reset
