@@ -1,20 +1,36 @@
-import React from 'react';
-import { render} from "react-dom";
+import React, { Component } from 'react';
 
-const moduleName = "React + Drupal";
-const App = () => {
-  return (
-    <div className="container">
-      <article>
-        <hgroup>
-          <img src="https://dummyjson.com/image/500x200" alt="Dummy Json"/>
-          <h1>This is a {moduleName} module build</h1>
-          <p>This is output from a react application within a drupal module.</p>
-          <button className="outline" onClick={() => alert('Hello world')}>Click here</button>
-        </hgroup>
-      </article>
-    </div>
-  )
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.moduleName = 'React + Drupal';
+  }
+
+  handleBtnClick = () => {
+    alert("Hello World!")
+  };
+  render() {
+    return (
+      <div className="container">
+        <article>
+          <hgroup>
+            <img src="https://dummyjson.com/image/500x200" alt="Dummy Json"/>
+            <h1>{this.moduleName}</h1>
+            <p>Some quick example text to build on the card title and make up the
+              bulk of the card's content.</p>
+            <button className="outline button" onClick={this.handleBtnClick}>
+              Do something!
+            </button>
+          </hgroup>
+        </article>
+      </div>
+    )
+  }
 }
 
-render(<App/>, document.querySelector('#react-app-block'));
+// render(<App />, document.querySelector('#react-app-block'));
+export default App;
+
+// render(<App/>, document.querySelector('#react-app-block'));
+// export default class App {
+// }

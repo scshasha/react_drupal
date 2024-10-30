@@ -2,3 +2,6 @@ react_app:
   version: 1.x
   js:
     js/react_app/dist/app.bundle.js: { minified: true }
+#  css:
+#    theme:
+#      https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css: { minified: true }
