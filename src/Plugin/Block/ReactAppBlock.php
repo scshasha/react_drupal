@@ -21,10 +21,7 @@ class ReactAppBlock extends BlockBase {
     // Here, you can include your React app.
     // Ensure you have built your React app and are serving it properly.
     return [
-      '#theme' => 'react_app_block',
-      '#content' => [
-        '#markup' => '<div id="react-app-block"></div>', // Placeholder for React app.
-      ],
+      '#markup' => '<div id="react-app-block"></div>', // React mount point.
       '#attached' => [
         'library' => [
           'react_drupal/react_app',
