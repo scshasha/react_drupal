@@ -10,6 +10,7 @@ const App = () => {
           <img src="https://dummyjson.com/image/500x200" alt="Dummy Json"/>
           <h1>This is a {moduleName} module build</h1>
           <p>This is output from a react application within a drupal module.</p>
+          <button className="outline" onClick={() => alert('Hello world')}>Click here</button>
         </hgroup>
       </article>
     </div>
