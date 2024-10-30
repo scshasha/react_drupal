@@ -8,9 +8,7 @@ export default () => {
   const styles  = 'btn btn-primary me-2';
 
   useEffect(() => {
-    if (count > 0) {
-      document.title = `${pageTitle} - Current Count is ${count}`;
-    }
+      count && (document.title = `${pageTitle} - Current Count is ${count}`);
   });
   return (
     <>
