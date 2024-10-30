@@ -20,7 +20,7 @@ class ReactAppBlock extends BlockBase {
   public function build() {
     // Here, you can include your React app.
     // Ensure you have built your React app and are serving it properly.
-    return [
+    $build = [
       '#markup' => '<div id="react-app-block"></div>', // React mount point.
       '#attached' => [
         'library' => [
@@ -28,6 +28,8 @@ class ReactAppBlock extends BlockBase {
         ],
       ],
     ];
+
+    return $build;
   }
 
   /**
