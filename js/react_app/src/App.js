@@ -14,7 +14,11 @@ class App extends React.Component {
       <div className="container">
         <article>
           <hgroup>
-            <img src="https://dummyjson.com/image/500x200" alt="Dummy Json"/>
+            <img
+              src="https://dummyjson.com/image/500x200"
+              style={{ maxWidth: '100%' }}
+              alt="Dummy Json"
+            />
             <h1>{this.moduleName}</h1>
             <p>Some quick example text to build on the card title and make up the
               bulk of the card's content.</p>
