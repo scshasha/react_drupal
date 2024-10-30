@@ -19,6 +19,9 @@
 node_modules/
 .sass-cache
 .cache
+js/**/node_modules/
+js/**/.sass-cache
+js/**/.cache
 
 # Temporary files
 /tmp/*
@@ -27,3 +30,5 @@ node_modules/
 !.gitkeep
 /.editorconfig
 /.gitattributes
+
+
