@@ -1,13 +1,21 @@
-import React from 'react';
-import { render} from "react-dom";
+import React, { useState } from 'react';
+import ProductList from "./components/product/ProductList";
+import SearchBar from "./components/SearchBar";
+import ItemCard from "./components/ItemCard";
 
-const App = () => {
+function App() {
+  const [itemInfo, setItemInfo] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
-    <>
-      <h2>My React App Block</h2>
-      <p>This is output from a react application within a drupal module.</p>
-    </>
-  )
+    <div className="row g-0">
+      <div className="row g-0 mb-3">
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      </div>
+      {itemInfo && <ItemCard itemInfo={itemInfo} />}
+      <ProductList onChoice={(info) => setItemInfo(info)} searchTerm={searchTerm} />
+    </div>
+  );
 }
 
-render(<App/>, document.querySelector('#react-app-block'));
+export default App;
