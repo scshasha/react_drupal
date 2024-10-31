@@ -1,12 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { render} from "react-dom";
 import App from "./App";
 
-// import "bootstrap/dist/css/bootstrap.min.css"
-// import "bootstrap/dist/js/bootstrap.bundle.min"
-
-const root = ReactDOM.createRoot(document.getElementById('react-app-block'));
+const root = ReactDOM.createRoot(document.getElementById('react_drupal__react_app'));
 root.render(
   <React.StrictMode>
     <App />

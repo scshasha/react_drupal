@@ -18,10 +18,8 @@ class ReactAppBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    // Here, you can include your React app.
-    // Ensure you have built your React app and are serving it properly.
     $build = [
-      '#markup' => '<div id="react-app-block"></div>', // React mount point.
+      '#markup' => '<div id="react_drupal__react_app"></div>',
       '#attached' => [
         'library' => [
           'react_drupal/react_app',

@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
 const config = {
   entry: './src/index.js',
@@ -27,6 +28,9 @@ const config = {
       },
     ]
   },
+  plugins: [
+    new Dotenv() // Load environment variables from .env file
+  ],
 };
 
 module.exports = config;

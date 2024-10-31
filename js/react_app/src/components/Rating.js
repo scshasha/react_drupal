@@ -12,7 +12,7 @@ export default ({ totalStars = 5, initialRating = 0, activeColor = '#FFD700', in
           return (
             <i
               key={value}
-              className="fas fa-star" // Font Awesome star icon
+              className="fas fa-star"
               style={{
                 color: value <= (hover || rating) ? activeColor : inactiveColor,
                 fontSize: '1rem',

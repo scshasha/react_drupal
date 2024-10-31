@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import StarRating from "./StarRating";
+import StarRating from "./Rating";
 
 export default ({ priceUSD, discountPercentage, itemInfo }) => {
-  // console.log(ratingId, ratingValue, itemInfo);
+  // console.log(priceUSD, discountPercentage, itemInfo);
   const [conversionRates, setConversionRates] = useState({});
   const [selectedCurrency, setSelectedCurrency] = useState('USD');
   const [convertedPrice, setConvertedPrice] = useState(priceUSD);
+  const currencyApiUrl = process.env.CURRENCY_API_URL;
 
   // Fetch conversion rates on component mount
   useEffect(() => {
     async function fetchConversionRates() {
       try {
-        const response = await fetch(`https://open.er-api.com/v6/latest/USD`);
+        const response = await fetch(`${currencyApiUrl}`);
         const data = await response.json();
         setConversionRates(data.rates);
       } catch (error) {
