@@ -1,45 +1,54 @@
-import React, { Component } from 'react';
-import Default from './components/Default';
-import CallToAction from "./components/CallToAction";
+import React, { useState } from 'react';
 import List from "./components/List";
+import PriceDisplay from "./components/PriceDisplay";
+import StarRating from "./components/StarRating";
 
 function App() {
+  const [itemInfo, setItemInfo] = useState(null);
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
-    <>
-      <div className="card">
-        <div className="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
-          <img src="https://dummyjson.com/image/700x300/333333/eae0d0" className="img-fluid"/>
-          <a href="#!">
-            <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.15);' }}></div>
-          </a>
-        </div>
-        <div className="card-body">
-          <Default title="React + Drupal" classStyles="card-title"/>
-          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <CallToAction />
-        </div>
-      </div>
+    <div className="container">
       <div className="row g-0">
-        <List/>
+        {
+          itemInfo &&
+          // <div className="card mb-3" style={{ maxWidth: '540px' }}>
+          <div className="card mb-12">
+            <div className="row g-0">
+              <div className="col-md-4">
+                <img
+                  src={itemInfo.images[0]}
+                  alt={itemInfo.title}
+                  className="img-fluid rounded-start"
+                />
+              </div>
+              <div className="col-md-8">
+                <div className="card-body">
+                  <h2 className="card-title">{itemInfo.title}</h2>
+                  <p className="card-text mb-md-2">{itemInfo.description}</p>
+                  <div className="clear-fix mb-3"></div>
+                  <p className="card-text"><strong>{capitalizeFirstLetter(itemInfo.category)}</strong></p>
+                  <p className="card-text">
+                    <small className="text-muted">
+                      <PriceDisplay
+                        priceUSD={itemInfo.price}
+                        discountPercentage={itemInfo.discountPercentage}
+                        itemInfo={itemInfo}
+                      />
+                    </small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+        <List onChoice={(info) => setItemInfo(info)} />
       </div>
-    </>
-  )
+    </div>
+  );
 }
 
 export default App;
-
-// class App extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.moduleName = 'React + Drupal';
-//   }
-//
-//   handleBtnClick = () => {
-//     alert("Hello World!")
-//   };
-//   render() {
-//     return
-//   }
-// }
-
