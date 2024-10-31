@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductList from "./components/product/ProductList";
 import SearchBar from "./components/SearchBar";
 import ItemCard from "./components/ItemCard";
@@ -6,6 +6,10 @@ import ItemCard from "./components/ItemCard";
 function App() {
   const [itemInfo, setItemInfo] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    setItemInfo(null);
+  }, [searchTerm]);
 
   return (
     <div className="row g-0">
