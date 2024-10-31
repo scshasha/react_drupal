@@ -22,7 +22,7 @@ export default ({ onChoice, searchTerm }) => {
 
   useEffect(() => {
     fetchData();
-    setVisibleCount(display); // Reset the visible count with each new search
+    setVisibleCount(display);
   }, [searchTerm]);
 
   const loadMore = () => {
@@ -36,6 +36,10 @@ export default ({ onChoice, searchTerm }) => {
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
+        </div>
+      ) : products.length === 0 ? (
+        <div className="text-center my-5">
+          <p>No results found</p>
         </div>
       ) : (
         <>
