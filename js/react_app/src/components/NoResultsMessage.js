@@ -2,7 +2,7 @@ import React from 'react';
 
 const NoResultsMessage = () => (
   <div className="text-center my-5">
-    <p>No results found</p>
+    <p>No results</p>
   </div>
 );
 

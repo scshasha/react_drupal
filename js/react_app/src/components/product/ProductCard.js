@@ -1,30 +1,16 @@
-import React, { useState } from 'react';
-import './ProductCard.css'; // Assuming you add styling for the blur effect
+import React, { Suspense } from 'react';
+import LazyImage from "../LazyImage";
 
-const ProductCard = ({ item, onChoice }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  return (
-    <div className="col">
-      <div className="card">
-        <a onClick={() => onChoice(item)} title={item.title}>
-          <img
-            src={`${item.images[0]}?low-res=true`} // Fetch low-res version
-            alt={item.title}
-            className={`card-img-top ${isLoaded ? '' : 'blurred'}`}
-            style={{ display: isLoaded ? 'none' : 'block' }}
-          />
-          <img
-            src={item.thumbnail}
-            alt={item.title}
-            className="card-img-top"
-            onLoad={() => setIsLoaded(true)}
-            style={{ display: isLoaded ? 'block' : 'none' }}
-          />
-        </a>
-      </div>
+const ProductCard = ({ item, onChoice }) => (
+  <div className="col">
+    <div className="card">
+      <a onClick={() => onChoice(item)} title={item.title}>
+        <Suspense fallback={<div style={{ height: '200px', backgroundColor: '#f0f0f0' }} />}>
+          <LazyImage src={item.thumbnail} alt={item.title} />
+        </Suspense>
+      </a>
     </div>
-  );
-};
+  </div>
+);
 
 export default ProductCard;

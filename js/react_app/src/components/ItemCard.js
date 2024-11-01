@@ -1,7 +1,8 @@
 import React from 'react';
 import Price from "./Price";
+import button from "bootstrap/js/src/button";
 
-const ItemCard = ({ itemInfo }) => {
+const ItemCard = ({ itemInfo, onNext, onPrevious, hasNext, hasPrevious }) => {
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
@@ -30,6 +31,14 @@ const ItemCard = ({ itemInfo }) => {
                 itemInfo={itemInfo}
               />
             </p>
+            <div className="btn-group shadow-0 mt-3" role="group">
+              <button type="button " className="btn btn-light me-2" onClick={onPrevious} disabled={!hasPrevious} data-mdb-ripple-init>
+                {`<< previous`}
+              </button>
+              <button type="button " className="btn btn-light" onClick={onNext} disabled={!hasNext} data-mdb-ripple-init>
+                {`next >>`}
+              </button>
+            </div>
           </div>
         </div>
       </div>
