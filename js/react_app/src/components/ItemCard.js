@@ -19,18 +19,16 @@ const ItemCard = ({ itemInfo }) => {
         <div className="col-md-8">
           <div className="card-body">
             <h2 className="card-title">{itemInfo.title}</h2>
-            <p className="card-text mb-md-2">{itemInfo.description}</p>
             <p className="card-text">
-              <strong>{capitalizeFirstLetter(itemInfo.category)}</strong>
+              <small className="text-muted">{capitalizeFirstLetter(itemInfo.category)}</small>
             </p>
+            <p className="card-text mb-md-3">{itemInfo.description}</p>
             <p className="card-text">
-              <small className="text-muted">
-                <Price
-                  priceUSD={itemInfo.price}
-                  discountPercentage={itemInfo.discountPercentage}
-                  itemInfo={itemInfo}
-                />
-              </small>
+              <Price
+                priceUSD={itemInfo.price}
+                discountPercentage={itemInfo.discountPercentage}
+                itemInfo={itemInfo}
+              />
             </p>
           </div>
         </div>

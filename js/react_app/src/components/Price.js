@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import StarRating from "./Rating";
+import Rating from "./Rating";
 
 export default ({ priceUSD, discountPercentage, itemInfo }) => {
-  // console.log(priceUSD, discountPercentage, itemInfo);
   const [conversionRates, setConversionRates] = useState({});
   const [selectedCurrency, setSelectedCurrency] = useState('USD');
   const [convertedPrice, setConvertedPrice] = useState(priceUSD);
   const currencyApiUrl = process.env.CURRENCY_API_URL;
+
+  function addPercentage(amount, percentage) {
+    const newAmount = amount * (1 + percentage / 100);
+    return parseFloat(newAmount.toFixed(2));
+  }
 
   // Fetch conversion rates on component mount
   useEffect(() => {
@@ -32,20 +36,40 @@ export default ({ priceUSD, discountPercentage, itemInfo }) => {
   }, [selectedCurrency, conversionRates, priceUSD]);
 
   // Format price based on the selected currency
-  const formattedPrice = new Intl.NumberFormat('en-US', {
+  const formattedDiscountedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: selectedCurrency,
   }).format(convertedPrice);
+  const formattedOriginalPrice = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: selectedCurrency,
+  }).format(addPercentage(convertedPrice, discountPercentage));
 
   return (
-    <>
-      <div className="input-group mb-3">
+    <div className="row">
+      <div className="col col-md-9">
+        <Rating
+          key={itemInfo.id}
+          totalStars={5}
+          initialRating={itemInfo.rating}
+          activeColor="orange"
+          inactiveColor="lightgray"
+          reviewCount={itemInfo.reviews.length}
+        />
+        <div className="text-muted mb-md-2">
+          <span className="text-decoration-line-through">{formattedOriginalPrice}</span>
+          {'\u00A0'}
+          <span className="primary text-primary">{formattedDiscountedPrice}</span>
+        </div>
+      </div>
+      <div className="col col-md-3">
         <select
           className="custom-select"
           id="currency-select"
           value={selectedCurrency}
           onChange={(e) => setSelectedCurrency(e.target.value)}
         >
+          <option value="USD">USD</option>
           {Object.keys(conversionRates).map((currency) => (
             <option key={currency} value={currency}>
               {currency}
@@ -53,14 +77,6 @@ export default ({ priceUSD, discountPercentage, itemInfo }) => {
           ))}
         </select>
       </div>
-      <StarRating
-        key={itemInfo.id} // Ensures StarRating re-renders with new item
-        totalStars={5}
-        initialRating={itemInfo.rating}
-        activeColor="orange"
-        inactiveColor="lightgray"
-      />
-      <small className="text-muted"><strong>{formattedPrice}</strong>&nbsp;(<s>{discountPercentage}&nbsp;%</s>)</small>
-    </>
+    </div>
   );
-}
+};
