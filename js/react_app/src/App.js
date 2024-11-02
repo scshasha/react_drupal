@@ -41,6 +41,7 @@ function App() {
     if (currentIndex > 0) {
       const prevIndex = currentIndex - 1;
       setItemInfo(itemsRef.current[prevIndex])
+      setCurrentIndex(prevIndex);
     }
   };
 
