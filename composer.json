@@ -1,0 +1,15 @@
+{
+  "name": "scshasha/drupal_react",
+  "description": "A Drupal + React custom module.",
+  "minimum-stability": "dev",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+      {
+          "name": "sivuyile.shasha",
+          "email": "shasha.christopher@gmail.com"
+      }
+  ],
+  "support": {},
+  "require": {
+  }
+}
